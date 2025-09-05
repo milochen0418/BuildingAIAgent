@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+### Disclaimer
+# This file is generated with the help of Junie. It is not meant for production use. If there are any mistakes or misinformation, please summit an issue [here]().
+###
+
 """
 Benchmark script for Exercise_2 agent via FastAPI.
 

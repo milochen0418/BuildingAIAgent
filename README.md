@@ -106,12 +106,36 @@ In this exercise, we will build an AI agent using the tools and user interface w
 
 This agent also have a web server that can be used to provide the user interface. We build it using fastapi and uvicorn. See the Exercise_2/web_server.py file for more details.
 
+Now try to build your own agent. Start small first then add functionality one by one. You can use the code in the agent.py file as a reference.
+
 ## Evaluate the performance of your agent
 
 ### Testing the performance of your agent
 
-Just like any other software, we need to test and benchmark the performance of our agent. 
+Just like any other software, we need to test and benchmark the performance of our agent. Treat it like running a machine learning experiment and measure the performance of the model, which is our agent.
+
+The most efficient way to test the performance of our agent is to run it against a significant number of test cases automatically with another Python scripts. Record the results and analise them. We will perform the same after tweaking with the agent so we can compare the performance of our agent before and after we make changes..
 
 ### Performance improvement plans
 
-## Exercise 3 - Improvements your agent
+There are things we can try to implement to improve the performance of our agent. Which way works depends on the problem and the agent. Here are some ideas:
+
+- Filter out irrelevant information in the prompt
+- Provide clearer instruction in the system prompts
+- Provide different/ more tools to the agent and LLM
+- Do we need more information from the user? If so how to ask the user for more information
+- Use a different LLM that is more capable
+
+Focus on what tasks you want the agent to be good at. A good strategy is to start making the agent good at a small ranges of tasks first before trying to generalize it.
+
+## Exercise 3.1 - Benchmark your agent
+
+In /Exercise_3/e2e_test.py, we perform end-to-end tests, and in /Exercise_3/benchmark.py, we have provided a simple benchmarking script that is use to test the performance of the example agent in /Exercise_2. See Exercise_3/test_and_benchmark.md for more details.
+
+After that, try adding more test cases in /Exercise_3/test_cases.json and run the testing and benchmarking script. Check the /Exercise_3/logs folder to see the results.
+
+Are the results good enough? If not, what can we do to improve the performance? We will look at that in the next section. Now think about implementing similar testing and benchmarking scripts for your own agent.
+
+## Exercise 3.2 - Improve the performance of your agent
+
+Try implementing the improvements we discussed in the previous section to see if that improves the performance of your agent. You may want to experiment with the example agent in /Exercise_2, before you start with your own agent. Discuss with others to see if you can come up with a good strategy.
