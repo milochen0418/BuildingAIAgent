@@ -21,7 +21,7 @@ This repo requires a self-contained llamafile model at `Exercise_2/your_choosen_
 5) Testing (no llamafile required for tests):
 - Install test deps: `pip install pytest httpx`
   - If you see `pytest: command not found`, install it with `pip install pytest` and re-run.
-- Run tests: `pytest -q Exercise_2/tests`
+- Run tests (in the repository root directory): `pytest`
   - The tests stub the LLM backend and network calls where needed, so you can run them without starting llamafile.
 
 Notes:

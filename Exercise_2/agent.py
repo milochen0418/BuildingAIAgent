@@ -36,7 +36,7 @@ from typing import Any, Dict, List, Optional
 # -----------------------------
 # Optional LLM backend (llamafile) config
 # -----------------------------
-from config import (
+from .config import (
     LLAMAFILE_ENABLED,
     LLAMAFILE_BASE_URL,
     LLAMAFILE_MODEL,
