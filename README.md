@@ -110,9 +110,9 @@ This agent also have a web server that can be used to provide the user interface
 
 Now try to build your own agent. Start small first then add functionality one by one. You can use the code in the agent.py file as a reference.
 
-## Evaluate the performance of your agent
+## Improve the performance of your agent
 
-### Testing the performance of your agent
+### Testing and benchmarking your agent
 
 Just like any other software, we need to test and benchmark the performance of our agent. Treat it like running a machine learning experiment and measure the performance of the model, which is our agent.
 
