@@ -150,4 +150,4 @@ print()
 
 ## Disclaimer
 
-This file is generated with the help of Junie. If there are any mistakes or misinformation, please summit an issue [here]().
+This file is generated with the help of Junie. If there are any mistakes or misinformation, please summit an issue [here](https://github.com/Cheukting/BuildingAIAgent/issues).
