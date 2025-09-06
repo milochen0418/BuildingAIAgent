@@ -14,7 +14,7 @@ This workshop is for those who are confident in coding in Python and have a basi
 
 ###  What's the difference?
 
-When we talk about AI model, we usually mean a machine learning model that can be used to solve a specific problem. For example, a model that can be used to solve the problem of image classification or text generation. When we talk about AI Agent, we usually mean a software that can interact with humans and use AI models to solve problems. For example, a software that can interact with humans and use a model to complete a task, such as solving the problem of image classification with certain specific requirements.
+When we talk about AI model, we usually mean a machine learning model that can be used to perform a specific task. For example, a model that can be used to perform image classification or text generation. When we talk about AI Agent, we usually mean a software that can interact with humans and use AI models to solve problems. For example, according to the user's prompt, count how many objects fit the description are in a certain image.
 
 ### Why do we need AI agent?
 
@@ -24,15 +24,15 @@ AI agent can also be an end-to-end solution to complete a multi-step task. It ca
 
 ## How to choose an AI model
 
-### Which AI model for what tasks
+### Which AI model for what tasks?
 
 First thing about choosing what AI model to use is depending on what task you want to complete. For example, if you want to build an AI agent that can perform coding tasks, you may need to choose an LLM that understand coding problems and would be able to provide an action plan of how to complete the tasks. It may also need to be able to write code to some of your files.
 
-Hugging Face Hub procides a lot of open sources models that you can use and fine tune to suit your purpose. The most interesting models would be the LLMs. LLMs (Large Language Models) are commonly a key components in AI agents as they can understand the users prompt and requirements which are natural languages.
+Hugging Face Hub provides a lot of open sources models that you can use and fine tune to suit your purpose. The most interesting models would be the LLMs. LLMs (Large Language Models) are commonly a key components in AI agents as they can understand the users prompt and requirements which are natural languages.
 
 ### Open source and proprietary models
 
-One limitation of open source model is it may need the proper computing hardware and infrastructure to run the AI models. Although the morden computers these days have multiple cores and are quite powerful. It may still be lagging in running a larger model. Setting a remote AI model server will require technical know-how and also require extra cost. Open sources models may also have limited licenses when use commercially. Make sure always check the usage licenses when downloading an open source model.
+One limitation of open source model is it may need the proper computing hardware and infrastructure to run the AI models. Although the modern computers these days have multiple cores and are quite powerful. It may still be lagging in running a larger model. Setting a remote AI model server will require technical know-how and also require extra cost. Open sources models may also have limited licenses when use commercially. Make sure always check the usage licenses when downloading an open source model.
 
 ## Exercise 1 - Trying different LLMs on Hugging Face
 
@@ -54,7 +54,7 @@ If the LLM cannot provide the above in json format, we may run into troubles lat
 
 ## Designing an AI agent
 
-### What task to complete
+### What task to complete?
 
 Now we have a LLM running locally, we can think about how to create our AI agent. First of all, we need to give a purpose of the AI agent. While a general purpose AI agent is possible, it will be more complicated to build and require more resources.
 
@@ -62,15 +62,15 @@ Here are some ideas for you to choose, feel free to come up with something simil
 - AI travel agent that can make recommendation on itineraries and bring you to the booking websites
 - AI book recommendation agent that can make book recommendation and bring you to purchase with both printed book and audio book version if available.
 
-### What tools do we need
+### What tools do we need?
 
-After deciding of what AI agent to build, the next step will be to think about the steps the agent will potential take and what tools we can provide for the agent. Tools are resources the AI agent can use to help completing the tasks given by the users. For example, maybe there will be a tool scan all the files in a directory in the file system, a tool to add a file, a tool to edit a file and a tool to delete a file.
+After deciding of what AI agent to build, the next step will be to think about the steps the agent will potentially take and what tools we can provide for the agent. Tools are resources the AI agent can use to help completing the tasks given by the users. For example, maybe there will be a tool scan all the files in a directory in the file system, a tool to add a file, a tool to edit a file and a tool to delete a file.
 
 Tools can be provided internally in the agent or it can be added with MCP servers.
 
 ### Using an MCP server
 
-MCP (Model Context Protocol) servers are a way to provide extra tools to the agent on top of the build in ones. Since the MCP standadize the connect between an AI agent and an external application, third party tools can be developed by anyone to extend the capability of the AI agent. The MCP server can be a standalone server or a service that can be used by multiple agents.
+MCP (Model Context Protocol) servers are a way to provide extra tools to the agent on top of the build in ones. Since the MCP standardize the connect between an AI agent and an external application, third party tools can be developed by anyone to extend the capability of the AI agent. The MCP server can be a standalone server or a service that can be used by multiple agents.
 
 In this workshop we will not use MCP servers, but you can learn more about them in the [MCP documentation](https://github.com/modelcontextprotocol/python-sdk).
 
@@ -112,13 +112,13 @@ This agent also have a web server that can be used to provide the user interface
 
 Now try to build your own agent. Start small first then add functionality one by one. You can use the code in the agent.py file as a reference.
 
-## Improve the performance of your agent
+## Improve the performance
 
 ### Testing and benchmarking your agent
 
 Just like any other software, we need to test and benchmark the performance of our agent. Treat it like running a machine learning experiment and measure the performance of the model, which is our agent.
 
-The most efficient way to test the performance of our agent is to run it against a significant number of test cases automatically with another Python scripts. Record the results and analise them. We will perform the same after tweaking with the agent so we can compare the performance of our agent before and after we make changes..
+The most efficient way to test the performance of our agent is to run it against a significant number of test cases automatically with another Python scripts. Record the results and analyse them. We will perform the same after tweaking with the agent so we can compare the performance of our agent before and after we make changes..
 
 ### Performance improvement plans
 
