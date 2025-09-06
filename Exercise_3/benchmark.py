@@ -158,11 +158,24 @@ def main():
     }
 
     all_ms: List[float] = []
-    all_success: int = 0
+    all_success_status_only: int = 0
+    all_success_ideal_results: int = 0
     all_total: int = 0
 
     for prompt in prompts:
         durs = all_durations[prompt]
+        status_list = all_status[prompt]
+        counts_list = all_counts[prompt]
+        runs_count = len(status_list)
+
+        success_status_only = sum(1 for s in status_list if 200 <= s < 300)
+        # Ideal results: status 2xx AND results_count between 5 and 10 inclusive
+        success_ideal_results = 0
+        for idx, s in enumerate(status_list):
+            c = counts_list[idx] if idx < len(counts_list) else None
+            if 200 <= s < 300 and c is not None and 5 <= c <= 10:
+                success_ideal_results += 1
+
         stats = {
             "runs": len(durs),
             "avg_ms": round(statistics.mean(durs), 2) if durs else None,
@@ -170,20 +183,28 @@ def main():
             "p95_ms": round(percentile(durs, 95), 2) if durs else None,
             "min_ms": round(min(durs), 2) if durs else None,
             "max_ms": round(max(durs), 2) if durs else None,
-            "success_rate": round(sum(1 for s in all_status[prompt] if 200 <= s < 300) / max(1, len(all_status[prompt])), 3),
-            "avg_results": round(statistics.mean(all_counts[prompt]), 2) if all_counts[prompt] else None,
+            # Keep backward compatibility: original success_rate (status only)
+            "success_rate": round(success_status_only / max(1, runs_count), 3),
+            # Explicit names for clarity
+            "success_rate_status_only": round(success_status_only / max(1, runs_count), 3),
+            "success_rate_ideal_results": round(success_ideal_results / max(1, runs_count), 3),
+            "avg_results": round(statistics.mean(counts_list), 2) if counts_list else None,
         }
         summary["prompts"].append({"prompt": prompt, **stats})
         all_ms.extend(durs)
-        all_success += sum(1 for s in all_status[prompt] if 200 <= s < 300)
-        all_total += len(all_status[prompt])
+        all_success_status_only += success_status_only
+        all_success_ideal_results += success_ideal_results
+        all_total += runs_count
 
     summary["totals"] = {
         "runs": len(all_ms),
         "avg_ms": round(statistics.mean(all_ms), 2) if all_ms else None,
         "p50_ms": round(percentile(all_ms, 50), 2) if all_ms else None,
         "p95_ms": round(percentile(all_ms, 95), 2) if all_ms else None,
-        "success_rate": round(all_success / max(1, all_total), 3) if all_total else None,
+        # Backward compatible total success_rate (status-only)
+        "success_rate": round(all_success_status_only / max(1, all_total), 3) if all_total else None,
+        "success_rate_status_only": round(all_success_status_only / max(1, all_total), 3) if all_total else None,
+        "success_rate_ideal_results": round(all_success_ideal_results / max(1, all_total), 3) if all_total else None,
     }
 
     with summary_path.open("w", encoding="utf-8") as sf:

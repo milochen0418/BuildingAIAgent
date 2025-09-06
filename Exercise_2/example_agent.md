@@ -11,7 +11,7 @@ This repo requires a self-contained llamafile model at `Exercise_2/your_choosen_
 - Optional: `export LLAMAFILE_MODEL=<id from GET /v1/models>`
 
 3) Run the CLI agent:
-- `python Exercise_2/agent.py`
+- `python -m Exercise_2.agent`
 
 4) Or run the web frontend (FastAPI):
 - Install deps once: `pip install -e .` (or `pip install fastapi uvicorn`)
