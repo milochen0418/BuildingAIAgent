@@ -127,7 +127,8 @@ def main():
     for prompt in prompts:
         for i in range(args.repeats):
             # Ensure clean state before each run by restarting the agent
-            r_status, r_dur_ms, _ = call_api("restart", args.server_url)
+            r_status, r_dur_ms, r_payload = call_api("restart", args.server_url)
+            r_filters = r_payload.get("filters") if isinstance(r_payload, dict) else None
             with jsonl_path.open("a", encoding="utf-8") as jf:
                 jf.write(json.dumps({
                     "type": "restart",
@@ -135,11 +136,13 @@ def main():
                     "iteration": i + 1,
                     "status": r_status,
                     "duration_ms": round(r_dur_ms, 2),
+                    "filters": r_filters,
                 }, ensure_ascii=False) + "\n")
 
             status, dur_ms, payload = call_api(prompt, args.server_url)
             results = payload.get("results") if isinstance(payload, dict) else None
             count = len(results) if isinstance(results, list) else None
+            filters = payload.get("filters") if isinstance(payload, dict) else None
             row = {
                 "type": "run",
                 "prompt": prompt,
@@ -147,6 +150,7 @@ def main():
                 "status": status,
                 "duration_ms": round(dur_ms, 2),
                 "results_count": count,
+                "filters": filters,
             }
             with jsonl_path.open("a", encoding="utf-8") as jf:
                 jf.write(json.dumps(row, ensure_ascii=False) + "\n")
