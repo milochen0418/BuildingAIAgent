@@ -47,7 +47,20 @@ Option B: Target a running web server
 ## What gets recorded
 
 - For every request: input text, HTTP status, start/end timestamps, duration (ms), result count, and a compact list of the first few titles (if any).
+- Filters logging: both E2E and Benchmark logs now include a top-level "filters" string parsed from the API response for easier analysis.
+  - E2E JSONL: each step line includes `filters` at the top level, and it also remains inside the compact `response` object for backward compatibility.
+  - Benchmark JSONL: both `restart` and `run` lines include a top-level `filters` field.
+  - Example E2E step:
+    {"type": "step", "label": "initial", "filters": "query='romantic comedy'; year=2005", "response": {"filters": "query='romantic comedy'; year=2005", ...}}
+  - Example Benchmark run:
+    {"type": "run", "prompt": "disney movies", "filters": "query='disney movies'", "results_count": 5, ...}
 - For benchmark summary: success rates, average and percentile latencies, and average results per prompt.
+
+### Notes on filters
+- The filters string reflects the agent's current parsed constraints (e.g., query terms, years, genres) at the time of the step/run.
+- E2E: a final `restart` step will typically show filters as `(none)`.
+- Existing consumers of older E2E logs can continue reading `response.filters`; the new top-level `filters` is an additive change.
+- Timestamp of change: 2025-09-06.
 
 ## Troubleshooting
 

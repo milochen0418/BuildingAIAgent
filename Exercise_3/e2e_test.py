@@ -127,6 +127,9 @@ def main():
         status, dur_ms, payload = call_api(text, args.server_url)
         t1 = datetime.now().isoformat(timespec="seconds")
 
+        # Extract filters at top-level for easier analysis (also present inside response)
+        filters = payload.get("filters") if isinstance(payload, dict) else None
+
         row = {
             "type": "step",
             "label": label,
@@ -135,6 +138,7 @@ def main():
             "ended_at": t1,
             "duration_ms": round(dur_ms, 2),
             "http_status": status,
+            "filters": filters,
             "response": compact_response(payload) if isinstance(payload, dict) else {"raw": str(payload)[:200]},
         }
         print(f"[E2E] {label}: {status} in {row['duration_ms']} ms | results={row['response'].get('results_count')}")
