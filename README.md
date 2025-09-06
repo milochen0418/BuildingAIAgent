@@ -36,7 +36,7 @@ One limitation of open source model is it may need the proper computing hardware
 
 ## Exercise 1 - Trying different LLMs on Hugging Face
 
-In this exercise, we will explore some open source LLMs on Hugging Face. We will focus on using models that are available in llamafile format. To learn more about llamafile and how to use it, please refer to the Exercise_1/how_to_llamafile.md. Get 1 or 2 model llamafiles and play around with it and try them out. Pick one to be used in the following exercises.
+In this exercise, we will explore some open source LLMs on Hugging Face. We will focus on using models that are available in llamafile format. To learn more about llamafile and how to use it, please refer to the [Exercise_1/how_to_llamafile.md](Exercise_1/how_to_llamafile.md). Get 1 or 2 model llamafiles and play around with it and try them out. Pick one to be used in the following exercises.
 
 A few things to consider when choosing a LLM:
 
@@ -97,7 +97,7 @@ In this exercise, we will start by writing down our AI agent design. You can use
 
 ## Exercise 2.2 - Build an AI agent
 
-In this exercise, we will build an AI agent using the tools and user interface we designed in the previous exercise. Before we build it our own, first, look at the code in the exercise_2/agent.py file and learn how to do it. Here are the highlights:
+In this exercise, we will build an AI agent using the tools and user interface we designed in the previous exercise. Before we build it our own, first, look at the code in the [Exercise_2/agent.py](Exercise_2/agent.py) file and learn how to do it. Here are the highlights:
 
 1) LLM backend (llamafile) client
     - In the example we used http requests with the backend, alternatively you can also use [OpenAI's python client](https://pypi.org/project/openai/) as llamafile are [compatable with OpenAI's API](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#json-api-quickstart).
@@ -106,7 +106,7 @@ In this exercise, we will build an AI agent using the tools and user interface w
 2) Tools: External data sources
     - In this agent we have 3 tools available for searching the movie recommendations, getting the movie summaries and trailers.
 
-This agent also have a web server that can be used to provide the user interface. We build it using fastapi and uvicorn. See the Exercise_2/web_server.py file for more details.
+This agent also have a web server that can be used to provide the user interface. We build it using fastapi and uvicorn. See the [Exercise_2/web_server.py](Exercise_2/web_server.py) file for more details.
 
 Now try to build your own agent. Start small first then add functionality one by one. You can use the code in the agent.py file as a reference.
 
@@ -132,12 +132,18 @@ Focus on what tasks you want the agent to be good at. A good strategy is to star
 
 ## Exercise 3.1 - Benchmark your agent
 
-In /Exercise_3/e2e_test.py, we perform end-to-end tests, and in /Exercise_3/benchmark.py, we have provided a simple benchmarking script that is use to test the performance of the example agent in /Exercise_2. See Exercise_3/test_and_benchmark.md for more details.
+In [Exercise_3/e2e_test.py](Exercise_3/e2e_test.py), we perform end-to-end tests, and in [Exercise_3/benchmark.py](Exercise_3/benchmark.py), we have provided a simple benchmarking script that is use to test the performance of the example agent in Exercise_2. See [Exercise_3/test_and_benchmark.md](Exercise_3/test_and_benchmark.md) for more details.
 
-After that, try adding more test cases in /Exercise_3/test_cases.json and run the testing and benchmarking script. Check the /Exercise_3/logs folder to see the results.
+After that, try adding more test cases in [Exercise_3/test_cases.json](Exercise_3/test_cases.json) and run the testing and benchmarking script. Check the [Exercise_3/logs](Exercise_3/logs) folder to see the results.
 
 Are the results good enough? If not, what can we do to improve the performance? We will look at that in the next section. Now think about implementing similar testing and benchmarking scripts for your own agent.
 
 ## Exercise 3.2 - Improve the performance of your agent
 
-Try implementing the improvements we discussed in the previous section to see if that improves the performance of your agent. You may want to experiment with the example agent in /Exercise_2, before you start with your own agent. Discuss with others to see if you can come up with a good strategy.
+Try implementing the improvements we discussed in the previous section to see if that improves the performance of your agent. You may want to experiment with the example agent in Exercise_2, before you start with your own agent. Discuss with others to see if you can come up with a good strategy.
+
+---
+
+## Support this workshop
+
+This workshop is created by Cheuk and is open source for everyone to use (under MIT license). Please consider sponsoring Cheuk's work via [GitHub Sponsor](https://github.com/sponsors/Cheukting).
