@@ -126,6 +126,17 @@ def main():
 
     for prompt in prompts:
         for i in range(args.repeats):
+            # Ensure clean state before each run by restarting the agent
+            r_status, r_dur_ms, _ = call_api("restart", args.server_url)
+            with jsonl_path.open("a", encoding="utf-8") as jf:
+                jf.write(json.dumps({
+                    "type": "restart",
+                    "prompt": prompt,
+                    "iteration": i + 1,
+                    "status": r_status,
+                    "duration_ms": round(r_dur_ms, 2),
+                }, ensure_ascii=False) + "\n")
+
             status, dur_ms, payload = call_api(prompt, args.server_url)
             results = payload.get("results") if isinstance(payload, dict) else None
             count = len(results) if isinstance(results, list) else None
