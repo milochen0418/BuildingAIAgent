@@ -72,6 +72,8 @@ Tools can be provided internally in the agent or it can be added with MCP server
 
 MCP (Model Context Protocol) servers are a way to provide extra tools to the agent on top of the build in ones. Since the MCP standadize the connect between an AI agent and an external application, third party tools can be developed by anyone to extend the capability of the AI agent. The MCP server can be a standalone server or a service that can be used by multiple agents.
 
+In this workshop we will not use MCP servers, but you can learn more about them in the [MCP documentation](https://github.com/modelcontextprotocol/python-sdk).
+
 ### User interfaces
 
 The last piece of the puzzle is to have a user interfaces so it is easy for the user to interact with the agent. The minimum requirement for the user interface is to have an interface for the user to input prompts and have a way to provide feedback from the agent.
