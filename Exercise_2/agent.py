@@ -36,13 +36,23 @@ from typing import Any, Dict, List, Optional
 # -----------------------------
 # Optional LLM backend (llamafile) config
 # -----------------------------
-from .config import (
-    LLAMAFILE_ENABLED,
-    LLAMAFILE_BASE_URL,
-    LLAMAFILE_MODEL,
-    LLAMAFILE_API_KEY,
-    LLAMAFILE_TIMEOUT,
-)
+try:
+    from .config import (
+        LLAMAFILE_ENABLED,
+        LLAMAFILE_BASE_URL,
+        LLAMAFILE_MODEL,
+        LLAMAFILE_API_KEY,
+        LLAMAFILE_TIMEOUT,
+    )
+except ImportError:
+    # running as a script (no package context)
+    from config import (
+        LLAMAFILE_ENABLED,
+        LLAMAFILE_BASE_URL,
+        LLAMAFILE_MODEL,
+        LLAMAFILE_API_KEY,
+        LLAMAFILE_TIMEOUT,
+    )
 
 # -----------------------------
 # Data models
