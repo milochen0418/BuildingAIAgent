@@ -1,0 +1,29 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+
+# ---- Poetry ----
+# local virtualenv (如果你用 poetry 的預設「專案內虛擬環境」)
+.venv/
+
+# ---- Build / Dist ----
+build/
+dist/
+*.egg-info/
+
+# ---- Jupyter / Notebook ----
+.ipynb_checkpoints
+*.ipynb_save
+
+# ---- OS / Editor ----
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.swo
